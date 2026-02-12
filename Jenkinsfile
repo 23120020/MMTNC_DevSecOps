@@ -45,7 +45,7 @@ pipeline {
             steps {
                 echo 'Quét lỗ hổng động với ZAP Stable...'
                 sh """
-                docker run --rm -v \$(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-baseline.py \
+                docker run --rm -u 0 -v \$(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-baseline.py \
                 -t http://${HOST_IP}:3000 -r zap_report.html || true
                 """
             }
