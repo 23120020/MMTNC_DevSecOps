@@ -5,6 +5,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+# Bỏ qua các thư mục dữ liệu của SonarQube
+infrastructure/sonarqube_data/
+infrastructure/sonarqube_extensions/
+infrastructure/sonarqube_logs/
+infrastructure/postgresql/
+infrastructure/postgresql_data/
+
+# Bỏ qua file báo cáo cũ (nếu có)
+zap_report.html
+zap_report.json
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
