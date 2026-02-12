@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        sonarScanner 'SonarScanner' 
-    }
-
     environment {
         IMAGE_NAME = "mmtnc-app"
         CONTAINER_NAME = "mmtnc-app-container"
@@ -22,9 +18,11 @@ pipeline {
         stage('2. SAST (SonarQube)') {
             steps {
                 echo 'Quét mã nguồn HTML/JS...'
-
-                withSonarQubeEnv('SonarQubeServer') { 
-                    sh "sonar-scanner"
+                script {
+                    def scannerHome = tool 'sonar-scanner'
+                    withSonarQubeEnv('SonarQubeServer') { 
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
             }
         }
